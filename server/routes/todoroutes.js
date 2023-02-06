@@ -6,8 +6,8 @@ const router = express.Router()
 
 router.get('/', getTodos)
 router.post('/', createTodo)
-router.delete('/', deleteTodo)
-router.put('/', updateTodo)
+router.delete('/:id', deleteTodo)
+router.put('/:id', updateTodo)
 
 
 module.exports = router

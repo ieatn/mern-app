@@ -17,11 +17,21 @@ const Home = () => {
         fetchTodos()
     }, [])
 
+    // delete endpoint
+    const deleteTodo = async (id) => {
+        await fetch(`http://localhost:4000/${id}`, {
+            method: 'DELETE',
+            "Content-Type": 'application/json'
+        })
+        setList(list.filter(i => i._id !== id))
+    }
+
     return ( 
         <>
             {list && list.map(i => (
                 <div key={i._id}>
                     <p>{i.title}</p>
+                    <button onClick={() => deleteTodo(i._id)}>delete</button>
                 </div>
             ))}
         </>
