@@ -8,6 +8,10 @@ app.use(express.json())
 // npm i mongoose
 const mongoose = require('mongoose')
 
+// npm i cors to fix cors error when front end fetching from a different localhost
+const cors = require('cors')
+app.use(cors({origin: '*'}))
+
 mongoose.connect(process.env.MONGODB_URI) 
     .then(() => {
         console.log('connected to db')
