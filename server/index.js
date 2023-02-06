@@ -16,27 +16,5 @@ mongoose.connect(process.env.MONGODB_URI)
         })
     })
 
-const Todo = require('./models/TodoModel')
-
-app.get('/', async (req, res) => {
-    const allTodos = await Todo.find({})
-    res.json(allTodos)
-})
-app.post('/', async (req, res) => {
-    const {title} = req.body
-    const todo = await Todo.create({title})
-    res.json(todo)
-})
-app.delete('/:id', async (req, res) => {
-    const {id} = req.params
-    const todo = await Todo.findById(id)
-    await todo.remove()
-    res.json(todo)
-})
-app.put('/:id', async (req, res) => {
-    const {id} = req.params
-    const todo = await Todo.findById(id)
-    todo.title = req.body.title
-    await todo.save()
-    res.json(todo)
-})
+const router = require('./routes/todoroutes')
+app.use('/', router)
