@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 const Home = () => {
     const [list, setList] = useState([])
+    const [todo, setTodo] = useState('')
     // get all endpoint
     useEffect(() => {
         const fetchTodos = async () => {
@@ -21,13 +22,34 @@ const Home = () => {
     const deleteTodo = async (id) => {
         await fetch(`http://localhost:4000/${id}`, {
             method: 'DELETE',
-            "Content-Type": 'application/json'
+            headers: {
+                "Content-Type": 'application/json'
+            }
         })
         setList(list.filter(i => i._id !== id))
     }
 
+    // post endpoint
+    const createTodo = async () => {
+        const title = todo
+        const res = await fetch('http://localhost:4000/', {
+            method: 'POST',
+            body: JSON.stringify({
+                title,
+            }),
+            headers: {
+                "Content-Type": 'application/json'
+            }
+        })
+        const data = await res.json()
+        setList([...list, data])
+        setTodo('')
+    }
+
     return ( 
         <>
+            <input type="text" onChange={(e) => setTodo(e.target.value)} value={todo} />
+            <button onClick={createTodo}>add</button>
             {list && list.map(i => (
                 <div key={i._id}>
                     <p>{i.title}</p>
