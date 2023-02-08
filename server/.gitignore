@@ -1,3 +1,2 @@
 node_modules
-# never show keys and passwords so hide env from github
-.env 
+.env
