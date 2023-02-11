@@ -11,8 +11,21 @@ const createToken = (id) => {
 
 
 // login
+// just copy and paste the register method, same thing except with user.login
 const loginUser = async (req, res) => {
-    res.json({msg: 'login'})
+    const {email, password} = req.body
+    try {
+        // call the register method in user model that creates user in db and returns it
+        const user = await User.login(email, password)
+
+        // create user token using mongoose user default id
+        const token = createToken(user._id)
+
+        res.status(200).json({email, token})
+    } catch (error) {
+        // throw error email already in use
+        res.status(400).json({error: error.message})
+    }
 }
 // signup
 const registerUser = async (req, res) => {
