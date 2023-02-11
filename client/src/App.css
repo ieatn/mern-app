@@ -7,3 +7,15 @@ body {
     justify-content: center;
     align-items: center;
 }
+nav {
+    display: flex;
+    justify-content: space-between;
+}
+nav div:last-child {
+    display: flex;
+    gap: 1rem;
+}
+.container {
+    max-width: 1200px;
+    margin: auto;
+}
