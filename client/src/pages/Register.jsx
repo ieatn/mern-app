@@ -1,13 +1,15 @@
 import { useState } from "react";
+// spent 30min trying useHistory but stackoverflow solution said it got replaced by navigate
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
+    const navigate = useNavigate()
 
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
 
     const register = async (e) => {
         e.preventDefault()
-
         fetch(`http://localhost:4000/register`, {
             method: "POST",
             headers: {
@@ -17,8 +19,10 @@ const Register = () => {
                 username, password,
             })
         })
-        
-        console.log(username, password)
+        // if register is successful, to go home page. 
+        .then(() => {
+            navigate('/')
+        })
     }
 
     return ( 

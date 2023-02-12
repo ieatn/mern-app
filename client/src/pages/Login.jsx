@@ -1,6 +1,9 @@
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
+    const navigate = useNavigate()
+
 
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
@@ -17,8 +20,10 @@ const Login = () => {
                 username, password,
             })
         })
-        
-        console.log(username, password)
+        // if login is successful, to go home page. 
+        .then(() => {
+            navigate('/')
+        })
     }
 
     return ( 
