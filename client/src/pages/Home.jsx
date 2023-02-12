@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Navbar from "../components/Navbar";
 
 const Home = () => {
     const [list, setList] = useState([])
@@ -48,6 +49,7 @@ const Home = () => {
 
     return ( 
         <>
+            <Navbar />
             <input type="text" onChange={(e) => setTodo(e.target.value)} value={todo} />
             <button onClick={createTodo}>add</button>
             {list && list.map(i => (

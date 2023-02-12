@@ -1,5 +1,4 @@
 import { useState } from "react";
-// spent 30min trying useHistory but stackoverflow solution said it got replaced by navigate
 import { useNavigate } from 'react-router-dom';
 
 const Register = () => {

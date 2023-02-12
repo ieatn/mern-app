@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
+import Navbar from "../components/Navbar";
 
 const Login = () => {
     const navigate = useNavigate()
@@ -28,6 +29,7 @@ const Login = () => {
 
     return ( 
         <>
+            <Navbar />
             <h1>Login</h1>
             <form className="form">
                 <input type="text" placeholder="username" onChange={(e) => setUsername(e.target.value)} />
