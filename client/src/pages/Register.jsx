@@ -20,7 +20,7 @@ const Register = () => {
         })
         // if register is successful, to go home page. 
         .then(() => {
-            navigate('/')
+            navigate('/home')
         })
     }
 

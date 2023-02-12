@@ -23,7 +23,7 @@ const Login = () => {
         })
         // if login is successful, to go home page. 
         .then(() => {
-            navigate('/')
+            navigate('/home')
         })
     }
 
