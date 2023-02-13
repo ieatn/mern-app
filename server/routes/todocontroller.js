@@ -8,10 +8,10 @@ const getTodos = async (req, res) => {
     res.json(allTodos)
 }
 const createTodo = async (req, res) => {
-    const {title} = req.body
-    const todo = await Todo.create({title})
-    res.json(todo)
-}
+    const { title, completed } = req.body;
+    const todo = await Todo.create({ title, completed: completed ?? false });
+    res.json(todo);
+};
 const deleteTodo = async (req, res) => {
     const {id} = req.params
     const todo = await Todo.findById(id)

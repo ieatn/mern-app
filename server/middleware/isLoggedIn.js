@@ -1,6 +1,4 @@
-// ran into jwt is not defined error
 const jwt = require('jsonwebtoken')
-
 
 // create 'authorization' in headers for postman get todos route and pass in bearer <token>
 // i passed in a token from a user i created already 
