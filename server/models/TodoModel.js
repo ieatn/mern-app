@@ -5,7 +5,9 @@ const Schema = mongoose.Schema
 const TodoSchema = new Schema({
     title: {
         type: String,
-        required: true,
+        // server crashing every time checkbox is checked and put request is called because of this
+        // because title isn't being included in the put request?
+        // required: true,
     },
     completed: {
         type: Boolean

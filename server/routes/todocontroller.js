@@ -22,7 +22,10 @@ const updateTodo = async (req, res) => {
     const {id} = req.params
     const todo = await Todo.findById(id)
     todo.title = req.body.title
-    todo.completed = req.body.completed
+    // since this is a put not patch request, don't delete any properties if only change one
+    if (req.body.completed !== undefined) {
+        todo.completed = req.body.completed;
+    }
     await todo.save()
     res.json(todo)
 }

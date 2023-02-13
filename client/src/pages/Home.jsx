@@ -51,6 +51,28 @@ const Home = () => {
         setTodo('')
     }
 
+    const toggleCompleted = async (id, completed) => {
+        await fetch(`http://localhost:4000/${id}`, {
+            method: 'PUT',
+            body: JSON.stringify({
+                completed: !completed,
+            }),
+            headers: {
+                "Content-Type": 'application/json'
+            }
+        })
+        setList(list.map(i => {
+            if (i._id === id) {
+                return {
+                    ...i,
+                    completed: !completed,
+                }
+            } else {
+                return i
+            }
+        }))
+    }
+
     return ( 
         <>
             <Navbar />
@@ -58,7 +80,9 @@ const Home = () => {
             <button onClick={createTodo}>add</button>
             {list && list.map(i => (
                 <div key={i._id}>
-                    <p>{i.title}</p>
+                    <input type="checkbox" onChange={() => toggleCompleted(i._id, i.completed)} />
+                    {i.title}
+                    {`${i.completed}`}
                     <button onClick={() => deleteTodo(i._id)}>delete</button>
                 </div>
             ))}
