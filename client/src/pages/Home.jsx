@@ -4,12 +4,16 @@ import Navbar from "../components/Navbar";
 const Home = () => {
     const [list, setList] = useState([])
     const [todo, setTodo] = useState('')
-    // get all endpoint
+
+    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZTg1MzBiOWU4MWU0NmExZTNmMGEyZCIsImlhdCI6MTY3NjI1NDg0Nn0.uqRUb5s2KGnrpwZUcZwJu3QlmNwat3mMdvKuZCQzgsA'
+
+    // get all endpoints
     useEffect(() => {
         const fetchTodos = async () => {
             const res = await fetch('http://localhost:4000/', {
                 method: 'GET',
                 headers: {
+                    Authorization: `Bearer ${token}`,
                     "Content-Type": 'application/json'
                 }
             })
