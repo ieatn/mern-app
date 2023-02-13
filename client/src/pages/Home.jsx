@@ -73,15 +73,40 @@ const Home = () => {
         }))
     }
 
+    const updateTitle = async (id, newTitle) => {
+        await fetch(`http://localhost:4000/${id}`, {
+            method: 'PUT',
+            body: JSON.stringify({
+                title: newTitle
+            }),
+            headers: {
+                "Content-Type": 'application/json'
+            }
+        })
+        setList(list.map(i => {
+            if (i._id === id) {
+                return {
+                    ...i,
+                    title: newTitle
+                }
+            } else {
+                return i
+            }
+        }))
+    }
+
     return ( 
         <>
             <Navbar />
+            {/* create to do form */}
             <input type="text" onChange={(e) => setTodo(e.target.value)} value={todo} />
             <button onClick={createTodo}>add</button>
+
+            {/* show todos */}
             {list && list.map(i => (
                 <div key={i._id}>
                     <input type="checkbox" onChange={() => toggleCompleted(i._id, i.completed)} />
-                    {i.title}
+                    <input type="text" value={i.title} onChange={(e) => updateTitle(i._id, e.target.value)} />
                     {`${i.completed}`}
                     <button onClick={() => deleteTodo(i._id)}>delete</button>
                 </div>

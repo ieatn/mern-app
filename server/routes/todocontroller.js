@@ -21,7 +21,9 @@ const deleteTodo = async (req, res) => {
 const updateTodo = async (req, res) => {
     const {id} = req.params
     const todo = await Todo.findById(id)
-    todo.title = req.body.title
+    if (req.body.title !== undefined) {
+        todo.title = req.body.title
+    }
     // since this is a put not patch request, don't delete any properties if only change one
     if (req.body.completed !== undefined) {
         todo.completed = req.body.completed;
