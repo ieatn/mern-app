@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from 'react-router-dom';
+import { TokenContext } from "../App";
 import Navbar from "../components/Navbar";
 
 const Login = () => {
@@ -7,6 +8,7 @@ const Login = () => {
 
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
+    const [token, setToken] = useContext(TokenContext)
 
     const login = async (e) => {
         e.preventDefault()
@@ -21,12 +23,13 @@ const Login = () => {
             })
         })
         // if login is successful, to go home page. 
-        .then((res) => {
-            if (res.ok) {
-                navigate('/')
-            } else {
-                throw new Error('wrong password')
-            }
+        .then(({token}) => {
+            setToken(token)
+            navigate('/')
+        })
+        .catch((err) => {
+            console.log(err.message)
+            throw new Error('wrong password')
         })
     }
 
