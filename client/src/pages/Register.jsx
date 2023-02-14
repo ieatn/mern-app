@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
+import Navbar from "../components/Navbar";
 
 const Register = () => {
     const navigate = useNavigate()
@@ -19,13 +20,18 @@ const Register = () => {
             })
         })
         // if register is successful, to go home page. 
-        .then(() => {
-            navigate('/home')
+        .then((res) => {
+            if (res.ok) {
+                navigate('/')
+            } else {
+                throw new Error('fill out all fields')
+            }
         })
     }
 
     return ( 
         <>
+            <Navbar />
             <h1>Register</h1>
             <form className="form">
                 <input type="text" placeholder="username" onChange={(e) => setUsername(e.target.value)} />

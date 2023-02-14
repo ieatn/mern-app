@@ -4,10 +4,11 @@ const Navbar = () => {
     return ( 
         <div className="container">
             <nav>
-                <Link to='/home'>Buddy</Link>
+                {/* only if logged in, else redirect to register */}
+                <Link to='/'>Buddy</Link>
                 <div>
                     <Link to='/login'>Login</Link>
-                    <Link to='/'>Register</Link>
+                    <Link to='/register'>Register</Link>
                 </div>
             </nav>
         </div>

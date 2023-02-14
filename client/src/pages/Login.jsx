@@ -5,7 +5,6 @@ import Navbar from "../components/Navbar";
 const Login = () => {
     const navigate = useNavigate()
 
-
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
 
@@ -22,8 +21,12 @@ const Login = () => {
             })
         })
         // if login is successful, to go home page. 
-        .then(() => {
-            navigate('/home')
+        .then((res) => {
+            if (res.ok) {
+                navigate('/')
+            } else {
+                throw new Error('wrong password')
+            }
         })
     }
 

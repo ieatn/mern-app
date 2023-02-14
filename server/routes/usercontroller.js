@@ -15,15 +15,10 @@ const createToken = (id) => {
 const loginUser = async (req, res) => {
     const {username, password} = req.body
     try {
-        // call the register method in user model that creates user in db and returns it
         const user = await User.login(username, password)
-
-        // create user token using mongoose user default id
         const token = createToken(user._id)
-
         res.status(200).json({username, token})
     } catch (error) {
-        // throw error username already in use
         res.status(400).json({error: error.message})
     }
 }
@@ -39,7 +34,6 @@ const registerUser = async (req, res) => {
 
         res.status(200).json({username, token})
     } catch (error) {
-        // throw error username already in use
         res.status(400).json({error: error.message})
     }
     

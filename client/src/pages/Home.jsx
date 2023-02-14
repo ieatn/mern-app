@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import Navbar from "../components/Navbar";
 
 const Home = () => {
     const [list, setList] = useState([])
@@ -97,7 +96,6 @@ const Home = () => {
 
     return ( 
         <>
-            <Navbar />
             {/* create to do form */}
             <input type="text" onChange={(e) => setTodo(e.target.value)} value={todo} />
             <button onClick={createTodo}>add</button>
@@ -107,7 +105,6 @@ const Home = () => {
                 <div key={i._id}>
                     <input type="checkbox" onChange={() => toggleCompleted(i._id, i.completed)} />
                     <input type="text" value={i.title} onChange={(e) => updateTitle(i._id, e.target.value)} />
-                    {`${i.completed}`}
                     <button onClick={() => deleteTodo(i._id)}>delete</button>
                 </div>
             ))}
