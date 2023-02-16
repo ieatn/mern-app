@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import Navbar from "../components/Navbar";
+import { AuthContext } from "../context/AuthContext";
 
 const Register = () => {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const { login } = useContext(AuthContext);
 
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
@@ -22,9 +24,10 @@ const Register = () => {
         // if register is successful, to go home page. 
         .then((res) => {
             if (res.ok) {
+                login()
                 navigate('/')
             } else {
-                throw new Error('fill out all fields')
+                throw new Error('did not work')
             }
         })
     }

@@ -1,6 +1,14 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { useNavigate } from 'react-router-dom'
+import { AuthContext } from "../context/AuthContext";
 
 const Home = () => {
+    const navigate = useNavigate()  
+    // const {isAuthenticated} = useContext(AuthContext)
+    // if (!isAuthenticated) {
+    //     navigate('/login')
+    //     return null
+    // }
     const [list, setList] = useState([])
     const [todo, setTodo] = useState('')
 
@@ -96,6 +104,10 @@ const Home = () => {
 
     return ( 
         <>
+
+            
+
+
             {/* create to do form */}
             <input type="text" onChange={(e) => setTodo(e.target.value)} value={todo} />
             <button onClick={createTodo}>add</button>
