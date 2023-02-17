@@ -4,11 +4,11 @@ import { AuthContext } from "../context/AuthContext";
 
 const Home = () => {
     const navigate = useNavigate()  
-    // const {isAuthenticated} = useContext(AuthContext)
-    // if (!isAuthenticated) {
-    //     navigate('/login')
-    //     return null
-    // }
+    const {isAuthenticated} = useContext(AuthContext)
+    if (!isAuthenticated) {
+        navigate('/login')
+        return null
+    }
     const [list, setList] = useState([])
     const [todo, setTodo] = useState('')
 

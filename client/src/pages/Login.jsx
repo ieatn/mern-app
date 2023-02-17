@@ -23,9 +23,10 @@ const Login = () => {
                 })
             })
             const {token} = await res.json()
-            login()
-            navigate('/')
-            
+            if (token) {
+                login()
+                navigate('/')
+            }
         } catch (err) {
             console.log(err.message)
             throw new Error('wrong password')
