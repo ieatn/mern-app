@@ -4,10 +4,11 @@ import Navbar from './components/Navbar'
 import Home from './pages/Home'
 import Login from './pages/Login'
 import { AuthContext } from './context/AuthContext'
+import Hero from './pages/Hero'
 
 const ProtectedRoute = ({element}) => {
   const { isAuthenticated } = useContext(AuthContext)
-  return isAuthenticated ? element : null
+  return isAuthenticated ? element : <Hero />  
 }
 
 function App() {

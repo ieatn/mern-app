@@ -36,12 +36,14 @@ const Login = () => {
     return ( 
         <>
             <Navbar />
-            <h1>Login</h1>
-            <form className="form">
-                <input type="text" placeholder="username" onChange={(e) => setUsername(e.target.value)} />
-                <input type="password" placeholder="password" onChange={(e) => setPassword(e.target.value)} />
-                <button onClick={loginUser}>login</button>
-            </form>
+            <div className="mx-auto max-w-md">
+                <form className="flex flex-col gap-4 mt-64">
+                    <h1 className="text-2xl font-bold text-center">Login</h1>
+                    <input className="p-2 border border-gray-400 rounded-lg" type="text" placeholder="username" onChange={(e) => setUsername(e.target.value)} />
+                    <input className="p-2 border border-gray-400 rounded-lg" type="password" placeholder="password" onChange={(e) => setPassword(e.target.value)} />
+                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md" onClick={loginUser}>login</button>
+                </form>
+            </div>
         </>        
      );
 }

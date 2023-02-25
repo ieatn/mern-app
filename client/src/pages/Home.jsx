@@ -6,8 +6,7 @@ const Home = () => {
     const navigate = useNavigate()  
     const {isAuthenticated} = useContext(AuthContext)
     if (!isAuthenticated) {
-        navigate('/login')
-        return null
+        navigate('/register')
     }
     const [list, setList] = useState([])
     const [todo, setTodo] = useState('')
@@ -104,22 +103,19 @@ const Home = () => {
 
     return ( 
         <>
-
-            
-
-
-            {/* create to do form */}
-            <input type="text" onChange={(e) => setTodo(e.target.value)} value={todo} />
-            <button onClick={createTodo}>add</button>
-
-            {/* show todos */}
+            <div class="max-w-2xl mx-auto">
+            <div class="flex items-center space-x-4 mt-64">
+                <input type="text" class="border rounded py-2 px-3 w-full" onChange={(e) => setTodo(e.target.value)} value={todo} />
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={createTodo}>Add</button>
+            </div>
             {list && list.map(i => (
-                <div key={i._id}>
-                    <input type="checkbox" onChange={() => toggleCompleted(i._id, i.completed)} />
-                    <input type="text" value={i.title} onChange={(e) => updateTitle(i._id, e.target.value)} />
-                    <button onClick={() => deleteTodo(i._id)}>delete</button>
+                <div key={i._id} class="flex items-center space-x-4 mt-4">
+                <input type="checkbox" class="form-checkbox h-5 w-5 text-blue-600" onChange={() => toggleCompleted(i._id, i.completed)} />
+                <input type="text" value={i.title} class="border rounded py-2 px-3 w-full" onChange={(e) => updateTitle(i._id, e.target.value)} />
+                <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onClick={() => deleteTodo(i._id)}>Delete</button>
                 </div>
             ))}
+            </div>
         </>
      );
 }

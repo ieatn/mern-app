@@ -7,13 +7,13 @@ const Navbar = () => {
     const {isAuthenticated, login, logout} = useContext(AuthContext)
 
     return ( 
-        <div className="container">
-            <nav>
+        <div className="md:container mx-auto text-xl text-blue-700 font-bold">
+            <nav className="flex justify-between">
                 <Link to='/'>Home</Link>
                 {isAuthenticated ? (
                     <button onClick={logout}>Logout</button>
                 ) : (
-                    <div>
+                    <div className="space-x-4">
                         <Link to='/login'>Login</Link>
                         <Link to='/register'>Register</Link>
                     </div>
