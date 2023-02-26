@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom'
 import { AuthContext } from "../context/AuthContext";
+import {API_URL} from '../config'
 
 const Home = () => {
     const navigate = useNavigate()  
@@ -16,7 +17,7 @@ const Home = () => {
     // get all endpoints
     useEffect(() => {
         const fetchTodos = async () => {
-            const res = await fetch('http://localhost:4000/', {
+            const res = await fetch(`${API_URL}`, {
                 method: 'GET',
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -31,7 +32,7 @@ const Home = () => {
 
     // delete endpoint
     const deleteTodo = async (id) => {
-        await fetch(`http://localhost:4000/${id}`, {
+        await fetch(`${API_URL}/${id}`, {
             method: 'DELETE',
             headers: {
                 "Content-Type": 'application/json'
@@ -43,7 +44,7 @@ const Home = () => {
     // post endpoint
     const createTodo = async () => {
         const title = todo
-        const res = await fetch('http://localhost:4000/', {
+        const res = await fetch(`${API_URL}`, {
             method: 'POST',
             body: JSON.stringify({
                 title,
@@ -58,7 +59,7 @@ const Home = () => {
     }
 
     const toggleCompleted = async (id, completed) => {
-        await fetch(`http://localhost:4000/${id}`, {
+        await fetch(`${API_URL}/${id}`, {
             method: 'PUT',
             body: JSON.stringify({
                 completed: !completed,
@@ -80,7 +81,7 @@ const Home = () => {
     }
 
     const updateTitle = async (id, newTitle) => {
-        await fetch(`http://localhost:4000/${id}`, {
+        await fetch(`${API_URL}/${id}`, {
             method: 'PUT',
             body: JSON.stringify({
                 title: newTitle
