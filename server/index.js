@@ -22,3 +22,5 @@ app.use('/', todoroutes)
 
 const userRoutes = require('./routes/userroutes')
 app.use('/', userRoutes)    
+
+module.exports = app
