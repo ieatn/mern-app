@@ -21,6 +21,10 @@ const todoroutes = require('./routes/todoroutes')
 app.use('/', todoroutes)
 
 const userRoutes = require('./routes/userroutes')
-app.use('/', userRoutes)    
+app.use('/', userRoutes)  
+
+app.get('/test', (req, res) => {
+    res.send('testing')
+})
 
 module.exports = app
