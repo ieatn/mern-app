@@ -4,7 +4,7 @@ const { getTodos, createTodo, deleteTodo, updateTodo } = require('./todocontroll
 const router = express.Router()
 const isLoggedIn = require('../middleware/isLoggedIn')
 
-// run isloggedin function and verify token before going to get todos endpoint
+// run isloggedin middleware function and verify token before going to get todos endpoint
 router.get('/', isLoggedIn, getTodos)
 router.post('/', createTodo)
 router.delete('/:id', deleteTodo)

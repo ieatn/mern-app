@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import Navbar from "../components/Navbar";
+import { API_URL } from "../config";
 import { AuthContext } from "../context/AuthContext";
 
 const Register = () => {
@@ -12,7 +13,7 @@ const Register = () => {
 
     const register = async (e) => {
         e.preventDefault()
-        fetch(`http://localhost:4000/register`, {
+        fetch(`${API_URL}/register`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json", 
