@@ -1,4 +1,4 @@
-mongoose.set('strictQuery', false);
+
 
 require('dotenv').config()
 
@@ -7,6 +7,7 @@ const app = express()
 app.use(express.json())
 
 const mongoose = require('mongoose')
+mongoose.set('strictQuery', false);
 
 const cors = require('cors')
 app.use(cors({origin: '*'}))
