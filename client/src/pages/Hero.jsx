@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 
 const Hero = () => {
+
     return ( 
             <div className="container flex flex-col justify-center items-center mx-auto mt-32 ">
                 {/* HERO */}
