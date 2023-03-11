@@ -1,3 +1,5 @@
+mongoose.set('strictQuery', false);
+
 require('dotenv').config()
 
 const express = require('express')
@@ -15,6 +17,9 @@ mongoose.connect(process.env.MONGODB_URI)
         app.listen(process.env.PORT, () => {
             console.log('listening to port', process.env.PORT)
         })
+    })
+    .catch((err) => {
+        console.log('Error connecting to db:', err)
     })
 
 const todoroutes = require('./routes/todoroutes')
