@@ -33,6 +33,11 @@ const Register = () => {
         })
     }
 
+    const handleGuest = () => {
+        login()
+        navigate('/')
+    }
+
     return ( 
         <>
             <Navbar />
@@ -42,6 +47,7 @@ const Register = () => {
                     <input type="text" placeholder="Username" className="p-2 border border-gray-400 rounded-lg" onChange={(e) => setUsername(e.target.value)} />
                     <input type="password" placeholder="Password" className="p-2 border border-gray-400 rounded-lg" onChange={(e) => setPassword(e.target.value)} />
                     <button onClick={register} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md">Register</button>
+                    <button onClick={handleGuest} className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-md'>Guest Mode</button>
                 </form>
             </div>
         </>        
